@@ -1,0 +1,88 @@
+# Conky settings #
+background yes
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# Window specifications #
+
+own_window yes
+#own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+#minimum_size 250 850
+maximum_width 250
+
+alignment br
+gap_x 35
+gap_y 50
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+override_utf8_locale yes
+xftfont Neuropolitical:size=8
+xftalpha 0.8
+uppercase no
+
+temperature_unit celsius
+
+#default_color CDCDCD
+default_color CDCDCD 
+
+# Lua Load  #
+lua_load ~/Devel/conky-lua-monochrome/clock_rings.lua
+lua_draw_hook_pre clock_rings
+
+TEXT
+#${font Neuropolitical:size=42}${time %e}
+#${goto 100}${font Neuropolitical:size=18}${color 565656}${voffset -75}${time %b}
+#${font Neuropolitical:size=10}${color 565656}${voffset 15}${time %A}${color 565656}${hr}
+#${goto 100}${font Neuropolitical:size=15}${color CDCDCD}${voffset -35}${time %Y}
+#${font Neuropolitical:size=30}${voffset 40}${alignc}${time %H}:${time %M}
+#${goto 175}${voffset -30}${font Neuropolitical:size=10}${time %S}
+${voffset 10}${font Neuropolitical:size=13}${color 565656}${alignr}Philadelphia, PA${font}
+#${font Neuropolitical:size=13}${color CDCDCD}${alignr}temp: ${weather http://weather.noaa.gov/pub/data/observations/metar/stations/LQBK.html temperature temperature 30} °C${font}
+${font Neuropolitical:size=13}${color CDCDCD}${alignr}temp: 72 °F${font}
+${color 565656}${hr}
+#${image ~/.conky/logo.png -p 165,10 -s 35x35}
+${font Neuropolitical:size=9}Uptime: ${uptime_short}
+${font Neuropolitical:size=9}Processes: ${processes}
+${font Neuropolitical:size=9}Running: ${running_processes}
+${color}
+${color 565656}${goto 125}${voffset 27}CPU
+${color CDCDCD}${goto 125}${cpu cpu0}%
+${color 565656}${goto 125}${voffset 55}RAM
+${color CDCDCD}${goto 125}${memperc}%
+${color 565656}${goto 125}${voffset 56}Disk
+${color CDCDCD}${goto 125}${fs_used_perc /}%
+${color 565656}${goto 125}${voffset 57}Disk
+${color CDCDCD}${goto 125}${fs_used_perc /home}%
+${color 565656}${goto 130}${voffset 55}Net
+${color CDCDCD}${goto 130}${downspeed p5p1}
+${color CDCDCD}${goto 130}${upspeed p5p1}
+
+${color 565656}${font Neuropolitical:size=9}${alignr}${nodename}
+${color 565656}${font Neuropolitical:size=9}${alignr}${pre_exec cat /etc/fedora-release}
+${color 565656}${font Neuropolitical:size=9}${alignr}Kernel: ${kernel}
+${hr}
